@@ -10,7 +10,7 @@ def use_hex():
     print(oct(a))  # 0o173
 
     b = -5
-    print(bin(b))  # -0b101 底层补码，输出原码
+    print(bin(b))  # -0b101 底层补码，输出符号加绝对值表示法
     print(hex(b))
     print(oct(b))
 
@@ -27,3 +27,25 @@ def use_float():
 
 
 use_float()
+
+
+def use_complex():
+    c = complex(3, 4)
+    print("c is %d+%dj" % (c.real, c.imag))  # python中的%格式输出
+    print(c)  # (3+4j)
+
+
+use_complex()
+
+str1 = "a"
+print(type(str1))  # <class 'str'>
+str2 = "abc"
+print(type(str2))
+str3 = "abc‘defg"
+print(str3)  # abc‘defg
+str4 = "abc\n'\"\\defg"
+print(str4)
+
+print(ord("1"))  # 字符1的ascii码值
+print("*" * 50)  # 字符串和整型相乘
+print(chr(65))  # 65对应的字符A
