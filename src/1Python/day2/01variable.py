@@ -9,8 +9,13 @@ print(keyword.iskeyword("你的名字"))  # 检测是否关键字 False
 # 定义变量不需要声明类型
 i = 10
 print(i)
+print(type(i))
 i = 98.5
 print(i)
+print(type(i))
+i = "abc"
+print(i)
+print(type(i))  # <class 'str'>
 
 # 字符/字符串均会格式化为双引号
 qq_num = "1"

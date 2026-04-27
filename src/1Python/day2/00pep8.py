@@ -19,8 +19,9 @@ print("""
 """)
 
 # 多个print默认换行，不想换行的做法如下
-print("hello", end="")
-print("world")  # 字符串用双引号或者单引号，若用单引号则格式化后自动转为双引号
+print("hello,", end="")
+print("world",end=" ")  # 字符串用双引号或者单引号，若用单引号则格式化后自动转为双引号
+print("python")
 
 print("")  # 等价于输出一个空行
 

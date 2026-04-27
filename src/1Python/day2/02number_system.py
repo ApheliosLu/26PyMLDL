@@ -5,7 +5,7 @@
 
 def use_hex():
     a = 123
-    print(bin(a))  # 0b1111011
+    print(bin(a))  # 0b1111011	输出的是字符串
     print(hex(a))  # 0x7b
     print(oct(a))  # 0o173
 
