@@ -26,7 +26,7 @@ def use_continue():
     print(f"0~100之间的偶数求和结果 = {result} num = {num}")
 
 
-use_continue()
+# use_continue()
 
 
 def use_break():
@@ -70,11 +70,13 @@ def use_for_else():
         print(f"遍历失败")
 
 
-# use_for_else()
+use_for_else()
 
-for i in range(10):  # in一个可迭代对象
-    if i == 15:
-        print("I got 15!")
-        break
-else:
-    print("I didn't find 15!")
+for j in range(10):  # in一个可迭代对象
+    print(f"j = {j}")
+    if j == 10:
+        print("I got 10!")
+        break  # 循环被 break 打断 → 不走 else
+else:  # 循环正常结束才执行的代码 循环从头到尾跑完没碰 break → 才走 else
+    print("I didn't find 10!")
+    print(f"j = {j}")

@@ -9,32 +9,44 @@ def say_hello():
     print("hello 3")
 
 
-# print("before say_hello()")
-# say_hello()
-# print("after say_hello()")
+print("before say_hello()")
+say_hello()
+print("after say_hello()")
 
 
 def sum_2_elem(elem1, elem2):
+    """
+    :param1 elem1:
+    :param2 elem2:
+    :return: result
+    """
     result = elem1 + elem2
     print(f"{elem1}+{elem2}={result}")
     return result
 
 
 ret = sum_2_elem("abc", "def")
-# print(ret)
+print(ret)
 
 
-def test1():
-    print("*" * 50)
+def test1(str1):
+    print(str1 * 50)
     print("here is test1")
-    print("*" * 50)
+    print(str1 * 50)
 
 
 def test2():
     print("-" * 50)
     print("here is test2")
-    test1()
+    test1("*")
     print("-" * 50)
 
 
 test2()  # 嵌套函数调用
+
+
+# print(dir(str))
+
+
+def calculate_average(scores: list[int]) -> float:  # 类型提示练习
+    return sum(scores) / len(scores)
