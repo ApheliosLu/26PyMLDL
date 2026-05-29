@@ -100,6 +100,7 @@ b = a[1:4]  # 切片 左闭右开
 print(f"a = {a},id(a) = {id(a)}")
 print(b)
 print(a * 2)  # * 重复
-a += b  # + 链接，等价于a.extend(b)
-print(f"链接后，a = {a},id(a) = {id(a)}")  # 不改变地址
+a += b  # + 链接，等价于a.extend(b)，不会改变地址
+# a = a + b  # 赋值运算效果等价于上一行，但会改变地址
+print(f"链接后，a = {a},id(a) = {id(a)}")
 print(a[2:6:2])
