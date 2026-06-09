@@ -57,7 +57,7 @@ def find_two_unique_numbers(list_numbers):
     """
     算法思想：
     1.对所有数进行异或，得到一个结果，该结果是两个出现一次的数的异或值
-    2.找到结果中任意一个为1的为，以此位为依据将所有数分为两组并进行再次异或，每组得到一个唯一的数
+    2.找到结果中任意一个为1的位，以此位为依据将所有数分为两组并进行再次异或，每组得到一个唯一的数
     :param list_numbers:
     :return:
     """
@@ -71,15 +71,21 @@ def find_two_unique_numbers(list_numbers):
     diff_bit = 1
     while (xor_result & diff_bit) == 0:
         diff_bit <<= 1  # 这一位不是1，左移
+    # 找xor_result最低位的1的另一种方法：一个数和自己相反数按位与会得到最低位的1
+    # diff_bit=xor_result&-xor_result
 
     # 第二步：分组进行异或
     num1, num2 = 0, 0
+    list1=[]
+    list2=[]
     for number in list_numbers:
-        if number & diff_bit:
-            num1 ^= number  # 与diff_bit异或为1，分到第一组
+        if number & diff_bit:   # 与diff_bit按位与为1，分到第一组
+            num1 ^= number
+            list1.append(number)
         else:
             num2 ^= number  # 第二组
-
+            list2.append(number)
+    print(list1, list2)
     return num1, num2
     # 在 Python 里，用逗号隔开多个值一起 return，就会自动变成元组。
     # 等价于 return (num1,num2)

@@ -22,7 +22,8 @@ def use_dict_base():
     xiaoming_dict["name"] = "小小明"  # 修改
     print(xiaoming_dict)
 
-    xiaoming_dict.setdefault("age", 20)  # setdefault若key本就存在，不会修改原值
+    ret=xiaoming_dict.setdefault("age", 20)  # setdefault若key本就存在，不会修改原值 ret=18
+    print(f"ret={ret}")
     print(xiaoming_dict)
 
     # 3.删除
@@ -71,8 +72,13 @@ def use_dict_iteration():
     print("-" * 50)
 
     # 想要同时拿到kv需要用.items()
-    for key, value in xiaoming_dict.items():  # 或 for kv in items，直接输出kv不拆包
+    for key, value in xiaoming_dict.items():
         print(f"key:{key:^5},value:{value:>9}")  # < > ^ 左 右 居中
+    print("-" * 50)
+
+    # 或 for kv in items，直接输出kv不拆包
+    for kv in xiaoming_dict.items():
+        print(f"{kv[0]}:{kv[1]}")
     print("-" * 50)
 
     for key in xiaoming_dict.keys():
@@ -105,6 +111,6 @@ def use_unpack_package():
 
 if __name__ == "__main__":
     # use_dict_base()
-    # use_dict_iteration()
-    use_dict_list()
-    use_unpack_package()
+    use_dict_iteration()
+    # use_dict_list()
+    # use_unpack_package()

@@ -3,6 +3,7 @@
 # https://github.com/ApheliosLu
 
 import copy
+import typing
 
 
 # 2、求两个有序数字列表的公共元素
@@ -27,11 +28,11 @@ def majority_element(list_3):  # 参照了摩尔投票算法原理
     for num in list_3:
         if count == 0:
             candidate = num
-        count += 1 if num == candidate else -1
+        count += 1 if num == candidate else -1  # 三元表达式
 
     # 验证阶段
-    count = a.count(candidate)
-    if count > len(a) // 2:
+    count = list_3.count(candidate)
+    if count > len(list_3) // 2:
         return candidate
     else:
         return None  # 如果没有元素出现超过n/2次，返回None
@@ -63,7 +64,7 @@ print(merged_list)
 print(type(merged_list))  # <class 'list'>
 print("-----第5道题-----")
 
-# 6、在列表 [1,2,3,4,5,6] 首尾分别添加整型元素 7 和 0。
+# 6、在列表 [1,2,3,4,5,6] 首尾分别添加整型元素 0和 7。
 my_list = [1, 2, 3, 4, 5, 6]
 
 my_list.insert(0, 0)
@@ -92,7 +93,7 @@ print(list_9.count(True))
 print(list_9.count(False))
 print(list_9.count(0))
 print(list_9.count(1))
-print(list_9.count(2))  # 结果 2 2 2 2 1
+print(list_9.count(2))  # 结果 2 2 2 2 1 ，即True等价于1、False等价于0
 print("-----第9道题-----")
 
 # 10、从列表 [True,1,0,‘x’,None,‘x’,False,2,True] 中删除元素‘x’。
@@ -170,7 +171,7 @@ print(sorted_matrix)
 print("-----第18道题-----")
 
 # 19、从列表 [1,4,7,2,5,8] 索引为3的位置开始，依次插入列表 [‘x’,‘y’,‘z’] 的所有元素。
-list_19 = [1, 4, 7, 2, 5, 8]
+list_19: list[typing.Union[int | str]] = [1, 4, 7, 2, 5, 8]
 list_19[3:3] = ["x", "y", "z"]
 print(list_19)
 print("-----第19道题-----")
@@ -182,9 +183,9 @@ print("-----第20道题-----")
 
 # 21、若 a = [1,2,3]，令 b = a，执行 b[0] = 9， a[0]亦被改变。为何？如何避免？----讲了深COPY和浅COPY再做
 a_21 = [1, 2, 3]
-# b_21 = a_21     # 执行 b = a 时，b 和 a 其实指向了同一个内存中的列表对象
-b_21 = copy.copy(a_21)  # 浅拷贝
-b_21[0] = 9  # 实际上是修改了 a 和 b 所指向的同一个列表
+# b_21 = a_21  # 执行 b = a 时，b 和 a 其实指向了同一个内存中的列表对象。修改b的值会影响a的值
+b_21 = copy.copy(a_21)  # 浅拷贝，修改b的值不会影响a的值
+b_21[0] = 9
 print(b_21)
 print(a_21)
 print("-----第21道题-----")
@@ -231,8 +232,8 @@ print("-----第28道题-----")
 
 # 29、遍历字典 {‘Alice’: 20, ‘Beth’: 18, ‘Cecil’: 21}，打印键值对。
 for key in dict_28:
-    print("%s - %s" % (key, dict_28[key]))
-
+    # print("%s - %s" % (key, dict_28[key]))
+    print(f"key:{key} value:{dict_28[key]}")
 print("-----第29道题-----")
 
 # 30、若 a = dict()，令 b = a，执行 b.update({‘x’:1})， a亦被改变。为何？如何避免？----讲了深COPY和浅COPY再做
@@ -254,7 +255,7 @@ print(dict_31)
 print("-----第31道题-----")
 
 # 32、将二维结构 [[‘a’,1],[‘b’,2]] 和 ((‘x’,3),(‘y’,4)) 转成字典。
-list_32 = [["a", 1], ["b", 2]]
+list_32: list[list] = [["a", 1], ["b", 2]]
 tuple_32 = (("x", 3), ("y", 4))
 
 dict_32_1 = dict(list_32)
@@ -279,6 +280,7 @@ print("-----第33道题-----")
 tuple_34 = (1, 2, 3)
 x, y, z = tuple_34
 print("x=%d   y=%d   z=%d    " % (x, y, z))
+print(f"x = {x}, y = {y}, z = {z}")
 print("-----第34道题-----")
 
 # 35、返回元组 (‘Alice’,‘Beth’,‘Cecil’) 中 ‘Cecil’ 元素的索引号。
@@ -385,6 +387,7 @@ swap_case = s.swapcase()
 
 # 输出结果
 print("全部大写:", upper_case)
+print(f"全部大写：{upper_case}")
 print("全部小写:", lower_case)
 print("大小写互换:", swap_case)
 print("-----第48道题-----")
@@ -463,9 +466,11 @@ print("\t python \n".lstrip())
 print("\t python \n".rstrip())
 print("\t python \n".strip())
 print("-----第59道题-----")
+
 # 60、将三个全英文字符串（比如，‘ok’, ‘hello’, ‘thank you’）分行打印，实现左对齐、右对齐和居中对齐效果。
 str60 = ["ok", "hello", "thank you"]
-len60 = len(str60[2])
+# len60 = len(str60[2])
+len60 = max(len(x) for x in str60)
 print("左对齐")
 for i in str60:
     print(i.ljust(len60))
@@ -481,6 +486,7 @@ for i in str60:
     print(i.center(len60))
 print("*" * 10)
 print("-----第60道题-----")
+
 # 61、将三个字符串 ‘15’, ‘127’, ‘65535’ 左侧补0成同样长度。
 str61 = ["15", "127", "65535"]
 len61 = max([len(x) for x in str61])
@@ -490,6 +496,8 @@ print("-----第61道题-----")
 
 # 62、将列表 [‘a’,‘b’,‘c’] 中各个元素用’|'连接成一个字符串。
 str62 = ["a", "b", "c"]
+str62_1 = "|".join(str62)
+print(str62_1)
 print("|".join(str62))
 print(type("|".join(str62)))
 print("-----第62道题-----")
@@ -500,26 +508,28 @@ print(",".join(str63))
 print("-----第63道题-----")
 
 # 64、从键盘输入手机号码，输出形如 ‘Mobile: 186 6677 7788’ 的字符串。
-# phone = input("输入手机号")
-# print('Mobile：' + phone)
+# phone = input("输入手机号:")
+# print("Mobile：" + phone)
 print("-----第64道题-----")
 
 # 65、从键盘输入年月日时分秒，输出形如 ‘2019-05-01 12:00:00’ 的字符串。
 # 2019-05-01 12:00:00
 # dt = input("年 月 日 时 分 秒").split()
-# print('-'.join(dt[:3]) + ' ' + ':'.join(dt[3:]))
+# print("-".join(dt[:3]) + " " + ":".join(dt[3:]))
 print("-----第65道题-----")
 
 # 66、给定两个浮点数 3.1415926 和 2.7182818，格式化输出字符串 ‘pi = 3.1416, e = 2.7183’。
 a66 = 3.1415926
 b66 = 2.7182818
 print("pi:{:.4f} e:{:.4f}".format(a66, b66))
+print(f"pi:{a66:.4f} e:{b66:.4f}")
 print("-----第66道题-----")
 
 # 67、将 0.00774592 和 356800000 格式化输出为科学计数法字符串。
 a67 = 0.00774592
 b67 = 356800000
 print("{:e} {:e}".format(a67, b67))
+print(f"{a67:e} {b67:e}")
 print("-----第67道题-----")
 
 # 68、将列表 [0,1,2,3.14,‘x’,None,’’,list(),{5}] 中各个元素转为布尔型。
@@ -535,9 +545,10 @@ print("-----第69道题-----")
 
 # 70、返回ASCII编码值为 57 和 122 的字符。
 a70 = [57, 122]
-# a70 = [x for x in range(57,123)]
+# a70 = [x for x in range(57, 123)]
 for i in a70:
-    print("{}在ASCII码表对应的字符为{}".format(i, chr(i)))
+    # print("{}在ASCII码表对应的字符为{}".format(i, chr(i)))
+    print(f"{i}在ASCII码表中对应的字符为{chr(i)}")
 print("-----第70道题-----")
 
 # 71、将列表 [3,‘a’,5.2,4,{},9,[]] 中 大于3的整数或浮点数置为1，其余置为0。
@@ -548,7 +559,7 @@ print("-----第71道题-----")
 
 # 72、将二维列表 [[1], [‘a’,‘b’], [2.3, 4.5, 6.7]] 转为 一维列表。
 a72 = [[1], ["a", "b"], [2.3, 4.5, 6.7]]
-a72 = [j for x in a72 for j in x]
+a72 = [j for x in a72 for j in x]  # 先看前for 再看后for
 print(a72)
 print("-----第72道题-----")
 
