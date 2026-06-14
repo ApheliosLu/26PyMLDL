@@ -21,7 +21,7 @@ class Dog:
         print(f"{self.name}汪汪叫")
 
     @staticmethod  # 静态方法
-    def wag_tail(self):
+    def wag_tail():
         print(f"摇尾巴")
 
 
@@ -29,5 +29,12 @@ my_dog = Dog("大黄", "黄")
 print(f"这是一只{my_dog.color}颜色的狗，叫{my_dog.name}")
 my_dog.bark()
 my_dog.wag_tail()
-print(my_dog.__dict__)  # {'name': '大黄', 'color': '黄'}
-print(dir(my_dog))
+
+print(my_dog.__dict__)  # 展示对象的属性 {'name': '大黄', 'color': '黄'}
+print(dir(my_dog))  # dir展示对象的所有属性和方法（包括内置）
+
+a = 123
+print("%d" % a)
+print("%x" % a)
+print(f"{a:d}")
+print(f"{a:x}")

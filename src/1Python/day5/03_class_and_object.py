@@ -19,7 +19,9 @@ class Person(object):  # 继承基类object
 
 # 类的实例化/实例化一个对象
 elephant = Person("大象", 18, 1.75)
-print(elephant)  # <__main__.Person object at 0x000002202CA48AD0>
+print(
+    elephant
+)  # <__main__.Person object at 0x000002202CA48AD0> elephant的地址和self的地址一样
 print(elephant.name, elephant.age, elephant.height)
 elephant.run()
 elephant.eat()

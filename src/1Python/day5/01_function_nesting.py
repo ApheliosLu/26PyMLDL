@@ -5,7 +5,7 @@
 
 import sys
 
-sys.setrecursionlimit(10**6)  # 设置递归的最大深度
+sys.setrecursionlimit(10**6)  # 设置递归的最大深度，已突破默认1000层上限
 
 
 # 递归 1.找到递归公式 2.编写结束条件
@@ -38,6 +38,9 @@ def step(n):
 
 if __name__ == "__main__":
     # sum_numbers(int(input(f"请输入sum_numbers：")))
-    # print(r_f(10))
+
+    # [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded
+    # print(r_f(100000))
+
     for i in range(1, 10):
         print(step(i))
