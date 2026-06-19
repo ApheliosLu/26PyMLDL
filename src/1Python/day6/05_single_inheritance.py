@@ -35,8 +35,8 @@ class Dog(Animal):
 
 class XiaoTianQuan(Dog):
     def __init__(self, name, color, age):
-        super().__init__(name, color)
         self.age = age
+        super().__init__(name, color)
 
     def bark(self):  # 覆盖父类方法
         print(f"{self.name}嗷呜嗷呜嗷呜")
