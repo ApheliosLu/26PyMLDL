@@ -36,7 +36,7 @@ def use_exception_file_line():
         # 获取完整的traceback信息
         tb_info = traceback.extract_tb(e.__traceback__)[
             -1
-        ]  # -1取最后一层（真正出错的地方）也即异常定义处；改成0则是取异常调用处
+        ]  # -1取最内层（真正出错的地方）也即异常定义处；改成0则是取异常调用处
         file_name = tb_info.filename
         lineno = tb_info.lineno
         print(f"异常发生的文件（模块）：{file_name}")
@@ -53,7 +53,7 @@ def use_exception_traceback_detail():
         # 1. 提取最后一层回溯
         exc_type, exc_value, exc_traceback = sys.exc_info()
         tb_last = exc_traceback
-        while tb_last.tb_next:  # 循环到最内层调用
+        while tb_last.tb_next:  # 循环到最内层调用(异常定义处）
             tb_last = tb_last.tb_next
 
         # 2. 获取异常位置信息
