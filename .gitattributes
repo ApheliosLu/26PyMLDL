@@ -1,0 +1,10 @@
+# 统一换行符：仓库内一律 LF
+#
+# 背景：本仓库的源码在 Windows 上编写，工作区文件是 CRLF，而提交进仓库的 blob 是 LF
+# （Windows 上 core.autocrlf=true 的作用）。把整个目录拷到 macOS 后，Mac 的 git 没有
+# autocrlf 设置，拿 CRLF 工作区去比对 LF blob，于是 89 个文件全部显示为"已修改"——
+# 但实测 `git diff --ignore-cr-at-eol` 为零，即**没有任何真实内容改动**。
+#
+# 加这一条后，git 在比较时会自动归一化换行符，那 89 个伪改动立刻消失；
+# 同时保证以后无论在哪台机器上编辑，提交进仓库的都是 LF。
+* text=auto eol=lf

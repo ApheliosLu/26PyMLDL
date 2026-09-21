@@ -1,0 +1,39 @@
+{
+  // VSCode 任务配置 —— 用法: 打开某个 .py 后按 Ctrl+Shift+B
+  //
+  // 说明: 本项目有 30+ 个子目录, 但只需要这一份 tasks.json。
+  //       任务用 ${file} / ${fileDirname} 变量, 所以"当前焦点是哪个文件就跑哪个",
+  //       不需要像 PyCharm 那样为每个子目录单独建项目。
+  //
+  // ⚠️ 只对 .py 生效。.ipynb 笔记本请用 Jupyter 界面跑
+  //    (打开 .ipynb → 右上角 Select Kernel 选 py314 → 点运行按钮)。
+  //    笔记本不适合用 shell 任务跑, 那样看不到单元格输出和图表。
+  "version": "2.0.0",
+  "tasks": [
+    {
+      // ★ 默认任务: Ctrl+Shift+B 触发的就是它
+      "label": "Python: 运行当前文件",
+      "detail": "用 py314 解释器运行当前 .py (含 torch / numpy / pandas 等)",
+      "type": "shell",
+      "command": "/Users/nalanyian/miniforge3/envs/py314/bin/python",
+      "args": [
+        "${file}"
+      ],
+      "options": {
+        // 以文件所在目录为工作目录 —— 本项目里有 `import card_tools` 这类
+        // 同目录模块导入, 必须以文件所在目录为 cwd 才能找到
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
+    }
+  ]
+}

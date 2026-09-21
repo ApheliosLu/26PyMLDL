@@ -1,0 +1,31 @@
+{
+  // 打开本项目时的默认解释器 —— Miniforge 的 py314 环境 (Python 3.14.7)
+  //
+  // 环境里已装：torch / torchvision(含 MPS 加速) / numpy / pandas / matplotlib /
+  //             scikit-learn / jupyter / ipykernel / tqdm / pillow / transformers 等
+  //
+  // 用绝对路径而非 PATH 上的 "python": conda 已设为不自动激活 base,
+  // 直接开终端时 python 并不存在。写绝对路径可保证无论终端状态如何都能找到正确解释器。
+  "python.defaultInterpreterPath": "/Users/nalanyian/miniforge3/envs/py314/bin/python",
+
+  // 笔记本(.ipynb)的默认内核
+  "jupyter.notebookFileRoot": "${fileDirname}",
+
+  // 集成终端里带上 PYTHONUTF8=1（macOS 默认已是 UTF-8，这里是跨平台写法一致）
+  "terminal.integrated.env.osx": {
+    "PYTHONUTF8": "1"
+  },
+
+  // 本项目大量子目录，排除掉噪音目录以免搜索/文件树被淹没
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.ipynb_checkpoints": true
+  },
+  "search.exclude": {
+    "**/__pycache__": true,
+    "**/.ipynb_checkpoints": true,
+    // 克隆的开源项目（非本仓库学习代码），体积大且不需要检索
+    "**/day36/Langchain-Chatchat-master": true,
+    "**/ChatGLM": true
+  }
+}
