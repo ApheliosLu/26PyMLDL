@@ -27,4 +27,8 @@ matplotlib.use("Agg")  # 使用无图形界面的后端
 plt.plot([1, 0, 9], [4, 5, 6])
 
 # plt.show()  # py文件不能像ipynb文件一样去show
-plt.savefig("test.png")
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+save_path = os.path.join(current_dir, "test.png")
+plt.savefig(save_path, dpi=150, bbox_inches="tight")
